@@ -3,45 +3,45 @@
 <head>
     <meta charset="utf-8">
     
-    <title>etcd cluster | Nolink</title>
+    <title>在Centos上搭建ETCD集群 | Nolink</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="" />
+        <meta name="keywords" content="etcd" />
     
-    <meta name="description" content="###Setup etcd cluster with centos
+    <meta name="description" content="首先，下载可执行包
 
-Fisrt, download
+1wget https://github.com/coreos/etcd/releases/download/v2.2.2/etcd-v2.2.2-linux-amd64.tar.gz
 
-wget https://github.com/coreos/etcd/releases/download/v2.2.2/etcd-v2.2.2-linux-amd64.tar.gz
+解压
+1tar -xzf etcd-v2.2.2-linux-amd64.tar.gz
 
-Second, decompress
-
-tar -xzf etcd-v2.2.2-linux-amd64.ta">
+使etcd命令可直接执行
+1cp etcd-v2.2.2-linux-amd64/etcd /usr">
 <meta property="og:type" content="article">
-<meta property="og:title" content="etcd cluster">
+<meta property="og:title" content="在Centos上搭建ETCD集群">
 <meta property="og:url" content="http://yoursite.com/2016/02/26/etcd-cluster/index.html">
 <meta property="og:site_name" content="Nolink">
-<meta property="og:description" content="###Setup etcd cluster with centos
+<meta property="og:description" content="首先，下载可执行包
 
-Fisrt, download
+1wget https://github.com/coreos/etcd/releases/download/v2.2.2/etcd-v2.2.2-linux-amd64.tar.gz
 
-wget https://github.com/coreos/etcd/releases/download/v2.2.2/etcd-v2.2.2-linux-amd64.tar.gz
+解压
+1tar -xzf etcd-v2.2.2-linux-amd64.tar.gz
 
-Second, decompress
-
-tar -xzf etcd-v2.2.2-linux-amd64.ta">
-<meta property="og:updated_time" content="2016-02-26T08:23:05.408Z">
+使etcd命令可直接执行
+1cp etcd-v2.2.2-linux-amd64/etcd /usr">
+<meta property="og:updated_time" content="2016-02-26T09:30:52.876Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="etcd cluster">
-<meta name="twitter:description" content="###Setup etcd cluster with centos
+<meta name="twitter:title" content="在Centos上搭建ETCD集群">
+<meta name="twitter:description" content="首先，下载可执行包
 
-Fisrt, download
+1wget https://github.com/coreos/etcd/releases/download/v2.2.2/etcd-v2.2.2-linux-amd64.tar.gz
 
-wget https://github.com/coreos/etcd/releases/download/v2.2.2/etcd-v2.2.2-linux-amd64.tar.gz
+解压
+1tar -xzf etcd-v2.2.2-linux-amd64.tar.gz
 
-Second, decompress
-
-tar -xzf etcd-v2.2.2-linux-amd64.ta">
+使etcd命令可直接执行
+1cp etcd-v2.2.2-linux-amd64/etcd /usr">
     
 
     
@@ -126,7 +126,7 @@ tar -xzf etcd-v2.2.2-linux-amd64.ta">
                 
     
         <h1 class="article-title" itemprop="name">
-        etcd cluster
+        在Centos上搭建ETCD集群
         </h1>
     
 
@@ -137,17 +137,39 @@ tar -xzf etcd-v2.2.2-linux-amd64.ta">
     <time datetime="2016-02-26T05:52:32.000Z" itemprop="datePublished">2016-02-26</time>
 </a>
             
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/etcd/">etcd</a></li></ul>
+
         </div>
         <div class="article-entry" itemprop="articleBody">
-            <p>###Setup etcd cluster with centos</p>
-<ul>
-<li>Fisrt, download</li>
+            <ul>
+<li>首先，下载可执行包</li>
 </ul>
-<p><code>wget https://github.com/coreos/etcd/releases/download/v2.2.2/etcd-v2.2.2-linux-amd64.tar.gz</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/coreos/etcd/releases/download/v2.<span class="number">2.2</span>/etcd-v2.<span class="number">2.2</span>-linux-amd64.tar.gz</span><br></pre></td></tr></table></figure>
 <ul>
-<li>Second, decompress</li>
+<li><p>解压</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xzf etcd-v2.<span class="number">2.2</span>-linux-amd64.tar.gz</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使etcd命令可直接执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp etcd-v2.<span class="number">2.2</span>-linux-amd64/etcd /usr/bin</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编辑启动命令，每个etcd节点都相同</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/init/etcd.conf</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<p><code>tar -xzf etcd-v2.2.2-linux-amd64.tar.gz</code></p>
+<p>内容如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">description <span class="string">"etcd 2.2 distributed key-value store"</span></span><br><span class="line"></span><br><span class="line">start on (net-device-up</span><br><span class="line">          and <span class="built_in">local</span>-filesystems</span><br><span class="line">          and runlevel [<span class="number">2345</span>])</span><br><span class="line">stop on runlevel [<span class="number">016</span>]</span><br><span class="line"></span><br><span class="line">respawn</span><br><span class="line">respawn <span class="built_in">limit</span> <span class="number">10</span> <span class="number">5</span></span><br><span class="line"></span><br><span class="line">script</span><br><span class="line">  <span class="keyword">if</span> [ <span class="operator">-f</span> <span class="string">"/etc/default/etcd"</span> ]; <span class="keyword">then</span></span><br><span class="line">    . /etc/default/etcd</span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">exec</span> /usr/bin/etcd &gt;&gt;/opt/<span class="built_in">log</span>/etcd.log <span class="number">2</span>&gt;&amp;<span class="number">1</span></span><br><span class="line">end script</span><br></pre></td></tr></table></figure>
+<ul>
+<li>编辑启动参数，每个etcd节点都不同</li>
+</ul>
+<p>第二个节点的内容如下，其他节点内容依次类推<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">env ETCD_INITIAL_CLUSTER=<span class="string">"etcd-01=http://etcd-01:2380,etcd-02=http://etcd-02:2380,etcd-03=http://etcd-03:2380"</span></span><br><span class="line">env ETCD_INITIAL_CLUSTER_STATE=<span class="string">"new"</span></span><br><span class="line">env ETCD_INITIAL_CLUSTER_TOKEN=<span class="string">"etcd-cluster-01"</span></span><br><span class="line">env ETCD_INITIAL_ADVERTISE_PEER_URLS=<span class="string">"http://etcd-02:2380"</span></span><br><span class="line">env ETCD_DATA_DIR=<span class="string">"/opt/etcd"</span></span><br><span class="line">env ETCD_LISTEN_PEER_URLS=<span class="string">"http://etcd-02:2380"</span></span><br><span class="line">env ETCD_LISTEN_CLIENT_URLS=<span class="string">"http://etcd-02:2379"</span></span><br><span class="line">env ETCD_ADVERTISE_CLIENT_URLS=<span class="string">"http://etcd-02:2379"</span></span><br><span class="line">env ETCD_NAME=<span class="string">"etcd-02"</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><p>启动etcd实例</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">initctl start etcd</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>停止etcd实例</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">initctl stop etcd</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 
         </div>
         <footer class="article-footer">
@@ -197,7 +219,7 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
     <section id="comments">
     
         
-    <div class="ds-thread" data-thread-key="2016/02/26/etcd-cluster/" data-title="etcd cluster" data-url="http://yoursite.com/2016/02/26/etcd-cluster/"></div>
+    <div class="ds-thread" data-thread-key="2016/02/26/etcd-cluster/" data-title="在Centos上搭建ETCD集群" data-url="http://yoursite.com/2016/02/26/etcd-cluster/"></div>
     <style>
         #ds-thread #ds-reset .ds-textarea-wrapper {
             background: none;
@@ -301,11 +323,11 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
         
 <nav id="article-nav">
     
-        <a href="/2016/02/26/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/2016/02/26/cloudera/" id="article-nav-newer" class="article-nav-link-wrap">
         <strong class="article-nav-caption">下一篇</strong>
         <p class="article-nav-title">
         
-            Hello World
+            在Centos上搭建Cloudera Manager
         
         </p>
         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
@@ -328,8 +350,8 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
                         
                         <div class="item-inner">
                             <p class="item-category"></p>
-                            <p class="item-title"><a href="/2016/02/26/hello-world/" class="title">Hello World</a></p>
-                            <p class="item-date"><time datetime="2016-02-26T08:23:05.408Z" itemprop="datePublished">2016-02-26</time></p>
+                            <p class="item-title"><a href="/2016/02/26/github-blog/" class="title">使用github搭建Blog</a></p>
+                            <p class="item-date"><time datetime="2016-02-26T09:27:16.722Z" itemprop="datePublished">2016-02-26</time></p>
                         </div>
                     </li>
                 
@@ -337,7 +359,16 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
                         
                         <div class="item-inner">
                             <p class="item-category"></p>
-                            <p class="item-title"><a href="/2016/02/26/etcd-cluster/" class="title">etcd cluster</a></p>
+                            <p class="item-title"><a href="/2016/02/26/cloudera/" class="title">在Centos上搭建Cloudera Manager</a></p>
+                            <p class="item-date"><time datetime="2016-02-26T09:18:05.000Z" itemprop="datePublished">2016-02-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2016/02/26/etcd-cluster/" class="title">在Centos上搭建ETCD集群</a></p>
                             <p class="item-date"><time datetime="2016-02-26T05:52:32.000Z" itemprop="datePublished">2016-02-26</time></p>
                         </div>
                     </li>
@@ -354,16 +385,30 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">2</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">3</span></li></ul>
         </div>
     </div>
 
 
             
                 
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/cloudera/">cloudera</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/etcd/">etcd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hadoop/">hadoop</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
 
             
                 
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/cloudera/" style="font-size: 10px;">cloudera</a> <a href="/tags/etcd/" style="font-size: 10px;">etcd</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a>
+        </div>
+    </div>
+
 
             
                 
