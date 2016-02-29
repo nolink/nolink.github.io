@@ -3,42 +3,39 @@
 <head>
     <meta charset="utf-8">
     
-    <title>在Centos上搭建Cloudera Manager及Hadoop集群 | Nolink</title>
+    <title>在Centos上搭建SaltStack，并用于生产的运维 | Nolink</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="cloudera,hadoop" />
+        <meta name="keywords" content="devops,salt,saltstack" />
     
-    <meta name="description" content="安装cloudera可以直接选择用repo安装，也可以直接下载RPM包进行安装，本文暂述通过repo安装的方法
+    <meta name="description" content="安装salt stack master
 
-准备好机器，并修改hostname，注意：hostname不能有下划线
+1yum install salt-master salt-api
 
-使用以下两个命令来修改Hostname12hostname hadoop-prod-slave1vi /etc/sysconfig/network
+安装salt minion
 
-准备好cloudera相关的repo
-12wget http:">
+1yum install salt-minion">
 <meta property="og:type" content="article">
-<meta property="og:title" content="在Centos上搭建Cloudera Manager及Hadoop集群">
-<meta property="og:url" content="http://yoursite.com/2016/02/26/cloudera/index.html">
+<meta property="og:title" content="在Centos上搭建SaltStack，并用于生产的运维">
+<meta property="og:url" content="http://yoursite.com/2016/02/29/saltstack/index.html">
 <meta property="og:site_name" content="Nolink">
-<meta property="og:description" content="安装cloudera可以直接选择用repo安装，也可以直接下载RPM包进行安装，本文暂述通过repo安装的方法
+<meta property="og:description" content="安装salt stack master
 
-准备好机器，并修改hostname，注意：hostname不能有下划线
+1yum install salt-master salt-api
 
-使用以下两个命令来修改Hostname12hostname hadoop-prod-slave1vi /etc/sysconfig/network
+安装salt minion
 
-准备好cloudera相关的repo
-12wget http:">
-<meta property="og:updated_time" content="2016-02-29T07:58:20.363Z">
+1yum install salt-minion">
+<meta property="og:updated_time" content="2016-02-29T09:56:57.775Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="在Centos上搭建Cloudera Manager及Hadoop集群">
-<meta name="twitter:description" content="安装cloudera可以直接选择用repo安装，也可以直接下载RPM包进行安装，本文暂述通过repo安装的方法
+<meta name="twitter:title" content="在Centos上搭建SaltStack，并用于生产的运维">
+<meta name="twitter:description" content="安装salt stack master
 
-准备好机器，并修改hostname，注意：hostname不能有下划线
+1yum install salt-master salt-api
 
-使用以下两个命令来修改Hostname12hostname hadoop-prod-slave1vi /etc/sysconfig/network
+安装salt minion
 
-准备好cloudera相关的repo
-12wget http:">
+1yum install salt-minion">
     
 
     
@@ -116,74 +113,36 @@
     </h1>
 </div>
                         <div class="main-body-content">
-                            <article id="post-cloudera" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-saltstack" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        在Centos上搭建Cloudera Manager及Hadoop集群
+        在Centos上搭建SaltStack，并用于生产的运维
         </h1>
     
 
             </header>
         
         <div class="article-subtitle">
-            <a href="/2016/02/26/cloudera/" class="article-date">
-    <time datetime="2016-02-26T09:18:05.000Z" itemprop="datePublished">2016-02-26</time>
+            <a href="/2016/02/29/saltstack/" class="article-date">
+    <time datetime="2016-02-29T09:56:57.775Z" itemprop="datePublished">2016-02-29</time>
 </a>
             
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cloudera/">cloudera</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hadoop/">hadoop</a></li></ul>
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/devops/">devops</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/salt/">salt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/saltstack/">saltstack</a></li></ul>
 
         </div>
         <div class="article-entry" itemprop="articleBody">
-            <p>安装cloudera可以直接选择用repo安装，也可以直接下载RPM包进行安装，本文暂述通过repo安装的方法</p>
-<ul>
-<li>准备好机器，并修改hostname，注意：hostname不能有下划线</li>
+            <ul>
+<li>安装salt stack master</li>
 </ul>
-<p>使用以下两个命令来修改Hostname<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hostname hadoop-prod-slave1</span><br><span class="line">vi /etc/sysconfig/network</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install salt-master salt-api</span><br></pre></td></tr></table></figure>
 <ul>
-<li><p>准备好cloudera相关的repo</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget http://archive.cloudera.com/cm5/redhat/<span class="number">6</span>/x86_64/cm/cloudera-manager.repo</span><br><span class="line">cp cloudera-manager.repo /etc/yum.repos.d/</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装cloudera server端，即cloudera manager，这里需要使用到数据库，本文使用cloudera内嵌postgresql</p>
-</li>
+<li>安装salt minion</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install cloudera-manager-daemons</span><br><span class="line">yum install cloudera-manager-server-db-<span class="number">2</span></span><br><span class="line">yum install cloudera-manager-server</span><br></pre></td></tr></table></figure>
-<ul>
-<li>修改cloudera数据库设置</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/cloudera-scm-server/db.properties</span><br></pre></td></tr></table></figure>
-<ul>
-<li>修改监控等功能数据库设置</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/cloudera-scm-server/db.mgmt.properties</span><br></pre></td></tr></table></figure>
-<ul>
-<li>启动cloudera</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">service cloudera-scm-server-db start</span><br><span class="line">service cloudera-scm-server start</span><br></pre></td></tr></table></figure>
-<ul>
-<li>安装Hadoop集群——安装Cloudera agent，agent也需要使用daemons里面的包，因此各个机器也需要再安装一遍daemons</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install cloudera-manager-daemons</span><br><span class="line">yum install cloudera-manager-agent</span><br><span class="line">service cloudera-scm-agent start</span><br></pre></td></tr></table></figure>
-<ul>
-<li>安装Hadoop集群——部署Zookeeper, Kafka, HDFS, HBase</li>
-</ul>
-<p>登录cloudera, <a href="http://cloudera:7180，用户名默认为admin" target="_blank" rel="external">http://cloudera:7180，用户名默认为admin</a>, 密码默认为admin</p>
-<p>点击添加群集，输入hostname列表，cloudera manager会自动侦测到cloudera agent<br>这里需要准备下id_rsa，在某一台机器运行ssh-keygen，一路回车，之后将id_rsa保存下来，<br>在cloudera的向导中，选择无密码登陆，然后将id_rsa上传</p>
-<ul>
-<li>其他安装可以参考cloudera manager使用手册，这里注明下需要注意的点：</li>
-</ul>
-<ol>
-<li>如果客户端使用vpn连接到zookeeper，需要调整zookeeper的最大客户端连接数（maxClientCnxns）</li>
-<li>调整kafka的Java Heap Size of Broker in Megabytes（broker_max_heap_size）</li>
-<li>调整kafka的Default Number of Partitions（num.partitions）</li>
-<li>调整kafka的Replication Factor（default.replication.factor）</li>
-<li>修改kafka的Advertised Host（advertised.host.name），注意，这里最好填写可解析的域名</li>
-<li>与Zookeeper一样，修改kafka的Maximum Connections per IP Address（max.connections.per.ip）</li>
-</ol>
-
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install salt-minion</span><br></pre></td></tr></table></figure>
         </div>
         <footer class="article-footer">
             
@@ -232,7 +191,7 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
     <section id="comments">
     
         
-    <div class="ds-thread" data-thread-key="2016/02/26/cloudera/" data-title="在Centos上搭建Cloudera Manager及Hadoop集群" data-url="http://yoursite.com/2016/02/26/cloudera/"></div>
+    <div class="ds-thread" data-thread-key="2016/02/29/saltstack/" data-title="在Centos上搭建SaltStack，并用于生产的运维" data-url="http://yoursite.com/2016/02/29/saltstack/"></div>
     <style>
         #ds-thread #ds-reset .ds-textarea-wrapper {
             background: none;
@@ -336,20 +295,10 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
         
 <nav id="article-nav">
     
-        <a href="/2016/02/26/github-blog/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            使用github搭建Blog
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/2016/02/26/elasticsearch/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2016/02/26/github-blog/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">在Centos上搭建Elastic Search集群</p>
+        <p class="article-nav-title">使用github搭建Blog</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
