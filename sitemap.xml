@@ -3,22 +3,47 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://example.org/posts/</loc>
+    <loc>http://nolink.github.io/about/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/categories/</loc>
+    <loc>http://nolink.github.io/posts/cloudera/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/</loc>
+    <loc>http://nolink.github.io/posts/elasticsearch/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/tags/</loc>
+    <loc>http://nolink.github.io/posts/etcd-cluster/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://nolink.github.io/posts/github-blog/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://nolink.github.io/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://nolink.github.io/posts/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://nolink.github.io/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://nolink.github.io/</loc>
     <priority>0</priority>
   </url>
   
